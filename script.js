@@ -1,5 +1,5 @@
 //testar visibilidade das paginas
-document.getElementById("endgamepage").hidden = "true"
+document.getElementById("endgamepage").hidden = true
 document.getElementById("ingamepage").hidden = true
 
 
@@ -8,6 +8,7 @@ document.getElementById("ingamepage").hidden = true
 //variaveis globais
 let numberOfPieces, typeOfPieces, allPieces, firstPiece, secondPiece, firstPieceId, secondPieceId, temporaryElement
 let score = 0
+let moves = 0
 let inGamePieces = []
 let boardGame = []
 let switchOne = false
@@ -20,6 +21,8 @@ let colors = ["Azul"]
 //funcoes
 function playGame(){
 //esconder pagina inicial e exibir pagina de joigo, receber inputs, gerar pecas e depois gerar board
+document.getElementById("restart").hidden = false
+document.getElementById("moves").hidden = false
 document.getElementById("firstpage").hidden = true;
 document.getElementById("ingamepage").hidden = false;
 getInputs()
@@ -88,6 +91,8 @@ if (temporaryElement.getAttribute("was-it-clicked") == "false"){//ve se o item f
 }
 
 function result(first, firstId, second, secondId){
+	moves++
+  document.getElementById("moves").innerHTML = "Number of Moves: "+moves
 	switchOne = false
   switchTwo = false
 	if (first == second){
@@ -112,10 +117,15 @@ document.getElementById("ingamepage").hidden = true
 document.getElementById("firstpage").hidden = true
 }
 function newGame(){
+document.getElementById("restart").hidden = true
+document.getElementById("moves").hidden = true
 document.getElementById("endgamepage").hidden = true
 document.getElementById("ingamepage").hidden = true
 document.getElementById("firstpage").hidden = false
+document.getElementById("lastscore").innerHTML = "Last Score: "+moves+ " moves"
 score = 0
+moves = 0
+document.getElementById("moves").innerHTML = "Number of Moves : "+moves
 inGamePieces = []
 boardGame = []
 switchOne = false
