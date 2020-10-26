@@ -7,6 +7,7 @@ document.getElementById("ingamepage").hidden = true
 
 //variaveis globais
 let numberOfPieces, typeOfPieces, allPieces, firstPiece, secondPiece, firstPieceId, secondPieceId, temporaryElement
+let rgbX, rgbY, rgbZ, rgb
 let score = 0
 let moves = 0
 let inGamePieces = []
@@ -14,7 +15,7 @@ let boardGame = []
 let switchOne = false
 let switchTwo = false
 let fruits = ["apple", "banana", "cherry", "mango", "orange", "avocado", "peach", "plum", "blueberry", "strawberry", "grape", "lemon", "lime", "kiwi", "pineapple"]
-let colors = ["Azul"]
+let colors = []
 
 //fim variavais globais
 
@@ -32,10 +33,11 @@ function getInputs(){
 	typeOfPieces = document.getElementById("typeOfPieces").value
   if (typeOfPieces == "fruits"){
   	allPieces = fruits
-  }else if (tyOfPieces == "colors"){
-  	allPieces = colors
+    return generatePieces()
+  }else {
+  	generateColors()
+    return generateBoard()
   }
-	return generatePieces()
 }
 function generatePieces(){
 //gerar pecas a partir do input
@@ -69,13 +71,21 @@ if (temporaryElement.getAttribute("was-it-clicked") == "false"){//ve se o item f
    	firstPiece = temporaryElement.getAttribute("data-value")
     firstPieceId = temporaryElement.getAttribute("id")
     temporaryElement.setAttribute("was-it-clicked","true")//ativa um swith para evitar evento de clique ou mouseout
+    if (typeOfPieces == "fruits"){
     temporaryElement.innerHTML = firstPiece
     temporaryElement.className = "selectedpiece"
+    } else if (typeOfPieces == "colors"){
+    temporaryElement.style.backgroundColor = firstPiece
+   }
     switchOne = true
   } else if (switchTwo == false){
 		secondPiece = temporaryElement.getAttribute("data-value")
     secondPieceId = temporaryElement.getAttribute("id")
+    if (typeOfPieces == "fruits"){
     temporaryElement.innerHTML = secondPiece
+    } else if (typeOfPieces == "colors"){
+    temporaryElement.style.backgroundColor = secondPiece
+    }
     temporaryElement.setAttribute("was-it-clicked","true")
     temporaryElement.className = "selectedpiece"
     switchTwo = true
@@ -101,6 +111,8 @@ function result(first, firstId, second, secondId){
     endGame()
     }
   } else {
+    document.getElementById(firstId).style.backgroundColor = ""
+    document.getElementById(secondId).style.backgroundColor = ""
   	document.getElementById(firstId).setAttribute("class","piece")
     document.getElementById(firstId).setAttribute("was-it-clicked","false")
     document.getElementById(firstId).innerHTML = ""
@@ -122,7 +134,7 @@ document.getElementById("moves").hidden = true
 document.getElementById("endgamepage").hidden = true
 document.getElementById("ingamepage").hidden = true
 document.getElementById("firstpage").hidden = false
-document.getElementById("lastscore").innerHTML = "Last Score: "+moves+ " moves"
+document.getElementById("lastscore").innerHTML = "Last Score: "+moves
 score = 0
 moves = 0
 document.getElementById("moves").innerHTML = "Number of Moves : "+moves
@@ -140,4 +152,14 @@ function onMouseOut(elem){
 	if (elem.getAttribute("was-it-clicked")=="false"){
 	elem.className = "piece"
   }
+}
+function generateColors(){
+	for (i = 0; i < numberOfPieces ; i++){
+    rgbX = Math.floor(Math.random()*250)
+    rgbY = Math.floor(Math.random()*250)
+    rgbZ = Math.floor(Math.random()*250)
+    rgb = `rgb(${rgbX},${rgbY},${rgbZ})`
+  	inGamePieces.push(rgb,rgb)
+  }
+  shufflePieces(inGamePieces)
 }
