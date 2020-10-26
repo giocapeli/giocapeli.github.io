@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Game 1.1</title>
+</head>
+<body>
+  <h1>
+  Memory Game
+  </h1>
+  
+  <section id="firstpage">
+    <div id="startinggame" class="board">
+      <form>
+        <label for="numberOfPieces">Number of pieces:</label>
+        <select class="seletor" id="numberOfPieces">
+         <option value="4">4</option>
+         <option value="8">8</option>
+         <option value="16">16</option>
+         <option value="24">24</option>
+         <option value="30">30</option>
+        </select>
+        <label for="typeOfPieces">Type of pieces:</label>
+        <select class="selector" id="typeOfPieces">
+          <option value="fruits">Fruits</option>
+          <option value="colors">Colors</option>
+        </select>
+        <input type="button" value="Play" id="play" onclick="playGame()">
+      </form>
+    </div>
+    
+  </section>
+  <section id="ingamepage">
+    <input type="button" value="Restart" onclick="newGame()">
+    <div id="boardgame" class="board">
+    sdasd
+    </div>
+  </section>
+  <section id="endgamepage">
+    <div id="endinggame" class="board">
+      <input type="button" value="Play again" onclick="newGame()">
+    </div>
+  </section>
+</body>
+</html>
