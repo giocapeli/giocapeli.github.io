@@ -1,0 +1,52 @@
+h1 {
+  color: white;
+  text-align: center;
+}
+body {
+  background: blue;
+}
+.board {
+  text-align: center;
+  background: cyan;
+  padding: 10px;
+  width: 90%;
+  height: 90%;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 7px 7px grey;
+  float: left;
+  }
+.piece {
+  text-align: center;
+  background: white;
+  padding: 10px;
+  width: 17%;
+  height: 100px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 7px 7px grey;
+  float: left;
+}
+.selectedpiece {
+  text-align: center;
+  background: yellow;
+  padding: 10px;
+  width: 17%;
+  height: 100px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 7px 7px grey;
+  float: left;
+}
+.onmouseover {
+  text-align: center;
+  background: grey;
+  padding: 10px;
+  width: 17%;
+  height: 100px;
+  margin: 10px;
+  border: black 5px;
+  border-radius: 10px;
+  box-shadow: 7px 7px grey;
+  float: left;
+}
