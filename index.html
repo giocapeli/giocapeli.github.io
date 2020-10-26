@@ -9,7 +9,15 @@
   <h1>
   Memory Game
   </h1>
-  
+  <section class="board" id="menu">
+    <div id="lastscore" class="menu">
+    Last Score: No last Score
+    </div>
+    <div id="moves" hidden class="menu">
+    Number of moves: 0
+    </div>
+    <input id="restart" class="menu" type="button" value="Restart" onclick="newGame()" hidden>
+  </section>
   <section id="firstpage">
     <div id="startinggame" class="board">
       <form>
@@ -32,9 +40,7 @@
     
   </section>
   <section id="ingamepage">
-    <input type="button" value="Restart" onclick="newGame()">
     <div id="boardgame" class="board">
-    sdasd
     </div>
   </section>
   <section id="endgamepage">
